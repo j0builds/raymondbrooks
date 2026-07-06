@@ -37,7 +37,7 @@ The repo already contains a `CNAME` file with the apex domain, so GitHub Pages w
 | A     | `@`         | `185.199.109.153`                       | 1 hour  |
 | A     | `@`         | `185.199.110.153`                       | 1 hour  |
 | A     | `@`         | `185.199.111.153`                       | 1 hour  |
-| CNAME | `www`       | `<your-github-username>.github.io`      | 1 hour  |
+| CNAME | `www`       | `j0builds.github.io`                    | 1 hour  |
 
 Delete any existing "parked"/forwarding A or CNAME records GoDaddy added for `@` and `www` first. DNS can take from a few minutes up to ~48 hours to propagate. Optional IPv6 (AAAA on `@`): `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153`.
 
