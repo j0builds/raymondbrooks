@@ -12,6 +12,10 @@ Drop the Raymond photos in this folder with these exact filenames so `index.html
 | `work-05.jpg` | TST sidelines — headphones |
 | `work-06.jpg` | Wildcard — replace with anything you want featured |
 
+## Homepage feed (HBCU FC daily drops)
+
+The banner under the nav uses the `work-*.jpg` files above. To swap in new daily HBCU FC posts, either replace those files or edit the `feed-card` image paths in `index.html` (search for `feed-banner`). Keep images around **168×210** display size (4:5 crop) and run `sips -Z 1200` so the feed stays fast.
+
 ## HEIC → JPG conversion
 
 Apple Photos / iMessage saves as `.HEIC`. To convert one file:

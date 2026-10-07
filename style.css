@@ -42,6 +42,119 @@ img { display: block; max-width: 100%; height: auto; }
   font-weight: 600;
   letter-spacing: 0.04em;
   font-size: 16px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+.wordmark:hover { opacity: 0.82; }
+.nav nav a { cursor: pointer; }
+
+/* HBCU FC — recent work feed (top banner) */
+.feed-banner {
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  padding: 14px 0 16px;
+}
+.feed-banner-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.feed-banner-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  margin-bottom: 12px;
+}
+.feed-kicker {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.feed-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5cff9a;
+  box-shadow: 0 0 0 0 rgba(92, 255, 154, 0.5);
+  animation: feed-pulse 2s ease-out infinite;
+}
+@keyframes feed-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(92, 255, 154, 0.45); }
+  70% { box-shadow: 0 0 0 8px rgba(92, 255, 154, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(92, 255, 154, 0); }
+}
+.feed-sub {
+  font-size: 14px;
+  color: var(--muted);
+  flex: 1;
+  min-width: 12rem;
+}
+.feed-see-all {
+  font-size: 13px;
+  color: var(--fg);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 2px;
+  transition: border-color 0.15s;
+}
+.feed-see-all:hover { border-color: var(--fg); }
+.feed-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.feed-track {
+  display: flex;
+  width: max-content;
+  animation: feed-scroll 36s linear infinite;
+  will-change: transform;
+}
+.feed-track:hover { animation-play-state: paused; }
+.feed-segment {
+  display: flex;
+  gap: 10px;
+  padding-right: 10px;
+}
+.feed-card {
+  flex: 0 0 auto;
+  width: 168px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.2s ease, border-color 0.2s;
+  cursor: pointer;
+}
+.feed-card:hover {
+  transform: translateY(-3px) rotate(-0.6deg);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.feed-card img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+.feed-cap {
+  display: block;
+  padding: 8px 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+@keyframes feed-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feed-track { animation: none; }
+  .feed-live { animation: none; }
+  .feed-track-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 }
 .nav nav { display: flex; gap: 28px; flex-wrap: wrap; justify-content: flex-end; }
 .nav nav a[aria-current="page"] { color: var(--fg); }
@@ -342,7 +455,10 @@ p.muted { color: var(--muted); }
 @media (max-width: 760px) {
   main { padding: 0 20px; }
   section { padding: 80px 0; }
-  .hero { padding-top: 100px; }
+  .hero { padding-top: 72px; }
+  .feed-banner-inner { padding: 0 20px; }
+  .feed-card { width: 140px; }
+  .feed-card img { height: 175px; }
   .nav { padding: 16px 20px; }
   .nav nav { gap: 16px; }
   .about { grid-template-columns: 1fr; gap: 40px; }
