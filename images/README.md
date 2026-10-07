@@ -4,6 +4,7 @@ Drop the Raymond photos in this folder with these exact filenames so `index.html
 
 | Filename | What it should show |
 |---|---|
+| `logo.png` | Hero logo (blue ring mark) — replace to update branding |
 | `raymond-portrait.jpg` | About-section portrait — recommend the wink-with-Sony close-up, vertical crop |
 | `work-01.jpg` | Warehouse hi-vis + camera shot |
 | `work-02.jpg` | Clapperboard / LT Apparel / With A Twist Media |

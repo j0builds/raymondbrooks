@@ -196,7 +196,13 @@ p.lede { color: var(--fg); font-size: clamp(17px, 1.6vw, 20px); max-width: 64ch;
 p.muted { color: var(--muted); }
 
 /* HERO */
-.hero { padding-top: 160px; }
+.hero { padding-top: 48px; }
+.hero-brand { margin-bottom: 32px; }
+.hero-logo {
+  width: min(112px, 26vw);
+  height: auto;
+  display: block;
+}
 .hero h1 { margin-bottom: 28px; max-width: 18ch; }
 .hero .lede { margin-bottom: 40px; }
 
