@@ -240,8 +240,7 @@
   max-width: 46ch;
 }
 .rr-partner p { margin: 0; font-size: 15px; }
-.rr-partner[hidden],
-.rr-detail[hidden] { display: none; }
+.rr-partner[hidden] { display: none; }
 
 .rr-still {
   position: relative;
@@ -297,17 +296,11 @@
   animation: rr-tick 0.45s ease;
 }
 
-.rr-lanes { display: flex; }
-.rr-lanes button,
-.rr-pause,
-.rr-close,
-.rr-card {
+.rr-pause {
+  margin-left: auto;
   font-family: inherit;
   cursor: pointer;
   border-radius: 0;
-}
-.rr-lanes button,
-.rr-pause {
   background: transparent;
   color: var(--muted);
   border: 1px solid var(--line);
@@ -316,18 +309,7 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.rr-lanes button { border-right: 0; }
-.rr-lanes button:last-child { border-right: 1px solid var(--line); }
-.rr-lanes button[aria-selected="true"] {
-  background: var(--fg);
-  color: var(--bg);
-  border-color: var(--fg);
-}
-.rr-lanes button:hover,
-.rr-pause:hover,
-.rr-close:hover { color: var(--fg); border-color: var(--fg); }
-.rr-lanes button[aria-selected="true"]:hover { color: var(--bg); }
-.rr-pause { margin-left: auto; }
+.rr-pause:hover { color: var(--fg); border-color: var(--fg); }
 
 .rr-handle {
   margin: 0;
@@ -352,74 +334,90 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding-bottom: 10px;
 }
 .rr-card {
-  display: block;
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 12px;
+  align-items: stretch;
   width: 100%;
+  min-height: 124px;
   text-align: left;
+  text-decoration: none;
   color: inherit;
-  background: rgba(255, 255, 255, 0.03);
+  background: #000;
   border: 1px solid var(--line);
-  padding: 12px 12px 11px;
+  padding: 0;
 }
-.rr-card:hover { border-color: rgba(255, 255, 255, 0.45); }
-.rr-card-meta,
-.rr-card-stat {
+.rr-card.is-lead {
+  border-color: var(--pitch);
+  box-shadow: inset 3px 0 0 var(--pitch);
+}
+.rr-card:hover,
+.rr-card:focus-visible {
+  border-color: var(--fg);
+}
+.rr-thumb {
+  display: block;
+  width: 96px;
+  height: 100%;
+  min-height: 124px;
+  object-fit: cover;
+  object-position: center;
+  background: #111;
+}
+.rr-card-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 10px 12px 10px 0;
+}
+.rr-card-meta {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   color: var(--muted);
   font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.rr-stamp {
+  background: var(--fg);
+  color: #000;
+  padding: 3px 6px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.rr-mock { color: var(--fg); }
+.rr-card.is-lead .rr-stamp { background: var(--pitch); }
 .rr-card-title {
-  display: block;
-  margin: 6px 0 4px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin: 0;
   color: var(--fg);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-transform: none;
 }
-.rr-card-body {
-  display: block;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.4;
-}
-.rr-card-stat { margin-top: 8px; }
-
-.rr-detail {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px;
-  background: #000;
-  border: 1px solid var(--fg);
-  overflow: auto;
-}
-.rr-detail .eyebrow { margin-bottom: 0; }
-.rr-detail h2 {
-  margin: 0;
-  font-size: clamp(26px, 3vw, 34px);
-}
-.rr-detail p { margin: 0; max-width: 40ch; }
-.rr-close {
-  align-self: flex-start;
-  background: transparent;
+.rr-open {
+  margin-top: auto;
   color: var(--fg);
-  border: 1px solid var(--line);
-  padding: 8px 12px;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.rr-handle a { text-decoration: underline; text-underline-offset: 3px; }
+.rr-handle a:hover { color: var(--fg); }
 
 .rr-banner button:focus-visible,
+.rr-banner a:focus-visible,
 .rr-window:focus-visible {
   outline: 2px solid var(--fg);
   outline-offset: 2px;
@@ -490,7 +488,10 @@
   .rr-story { padding: 22px 16px 18px; }
   .rr-top { padding: 12px 14px 12px 18px; }
   .rr-brand { margin-left: 0; }
-  .rr-window { height: 260px; }
+  .rr-window { height: 280px; }
+  .rr-card { grid-template-columns: 78px 1fr; min-height: 112px; }
+  .rr-thumb { width: 78px; min-height: 112px; }
+  .rr-card-title { font-size: 14px; -webkit-line-clamp: 3; }
   .rr-lower { gap: 12px; margin-top: 16px; }
   .rr-kit,
   .rr-circle { width: 96px; height: 96px; }
