@@ -16,6 +16,8 @@
 </head>
 <body>
 
+<div class="cursor-ring" id="cursor-ring" hidden aria-hidden="true"></div>
+
 <header class="nav">
   <a href="#top" class="wordmark" aria-label="42MEDIA home">42MEDIA</a>
   <nav>
@@ -62,15 +64,17 @@
 <main id="top">
 
   <section class="hero">
-    <div class="hero-brand">
-      <img class="hero-logo" src="images/logo.png" alt="42MEDIA logo" width="1126" height="2000" decoding="async" fetchpriority="high">
+    <div class="hero-moon" aria-hidden="true">
+      <img src="images/logo.png" alt="" width="1126" height="2000" decoding="async" fetchpriority="high">
     </div>
+    <div class="hero-content">
     <p class="eyebrow">Creative Development &middot; Creative Network</p>
     <h1>Fuel Creative Success.</h1>
     <p class="lede">42MEDIA helps individuals, businesses, athletes, entrepreneurs, and creators unlock their full potential. Creativity is more than content — it is communication, leadership, storytelling, strategy, and community.</p>
     <div class="cta-row">
       <a href="#booking" class="btn">Book a free consultation</a>
       <a href="#services" class="btn btn-ghost">See how we fuel success</a>
+    </div>
     </div>
   </section>
 
@@ -322,6 +326,6 @@
   </div>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="cursor.js" defer></script>
 </body>
 </html>

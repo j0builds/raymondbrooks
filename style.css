@@ -195,13 +195,65 @@ p { color: var(--muted); }
 p.lede { color: var(--fg); font-size: clamp(17px, 1.6vw, 20px); max-width: 64ch; }
 p.muted { color: var(--muted); }
 
+/* CUSTOM CURSOR (logo ring) */
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  z-index: 10000;
+  background: url("images/logo.png") center / contain no-repeat;
+  opacity: 0.92;
+  transition: opacity 0.2s;
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor summary {
+    cursor: none !important;
+  }
+}
+
 /* HERO */
-.hero { padding-top: 48px; }
-.hero-brand { margin-bottom: 32px; }
-.hero-logo {
-  width: min(112px, 26vw);
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+  min-height: min(72vh, 720px);
+}
+.hero-moon {
+  position: absolute;
+  top: -18%;
+  left: 50%;
+  transform: translateX(-42%);
+  width: min(640px, 110vw);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.42;
+  filter: blur(0.3px);
+  animation: hero-moon-float 22s ease-in-out infinite alternate;
+}
+.hero-moon img {
+  width: 100%;
   height: auto;
   display: block;
+  mask-image: radial-gradient(circle at 50% 45%, #000 38%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 38%, transparent 72%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+@keyframes hero-moon-float {
+  from { transform: translateX(-42%) translateY(0); }
+  to { transform: translateX(-38%) translateY(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-moon { animation: none; }
 }
 .hero h1 { margin-bottom: 28px; max-width: 18ch; }
 .hero .lede { margin-bottom: 40px; }
@@ -461,7 +513,13 @@ p.muted { color: var(--muted); }
 @media (max-width: 760px) {
   main { padding: 0 20px; }
   section { padding: 80px 0; }
-  .hero { padding-top: 72px; }
+  .hero { padding-top: 88px; min-height: auto; }
+  .hero-moon {
+    width: min(420px, 130vw);
+    top: -8%;
+    opacity: 0.35;
+  }
+  .cursor-ring { width: 36px; height: 36px; }
   .feed-banner-inner { padding: 0 20px; }
   .feed-card { width: 140px; }
   .feed-card img { height: 175px; }
